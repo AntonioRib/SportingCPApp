@@ -1,0 +1,13 @@
+<ion-view view-title="Team">
+  <ion-content ng-controller="PlayersCtrl" class="padding">
+  	<ion-list>
+  		<ion-item ng-repeat="item in players"
+  		class="item-icon-left item-text-wrap">
+  		<i class="icon">{{item.jerseyNumber}}</i>
+  		<h2>{{item.name}} - {{item.position}}</h2>
+  		<p>{{item.dateOfBirth}} - {{item.nationality}}</p>
+  		<p><b>Contract until - </b> {{item.contractUntil}} </p>
+  		<p><b>Market value - </b>{{item.marketValue}}</p>
+  	</ion-list>
+  </ion-content>
+</ion-view>

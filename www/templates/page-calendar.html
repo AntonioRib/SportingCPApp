@@ -1,0 +1,9 @@
+<ion-view view-title="Calendar">
+  <ion-content ng-controller="FixturesCtrl" class="padding">
+  	 <ion-list>
+  		<ion-item ng-repeat="item in allFixtures"
+  		class="item-icon-left item-text-wrap">
+        {{item.awayTeamName}} vs {{item.homeTeamName}}
+  	</ion-list>
+  </ion-content>
+</ion-view>

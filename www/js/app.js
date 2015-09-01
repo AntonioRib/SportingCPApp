@@ -58,16 +58,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           controller: 'SeasonCtrl'
         }
       }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
+    })  
 
   .state('tab.history', {
     url: '/history',
@@ -75,6 +66,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       'tab-history': {
         templateUrl: 'templates/tab-history.html',
         controller: 'HistoryCtrl'
+      }
+    }
+  })
+
+  .state('tab.team', {
+    url: '/season/team',
+    views: {
+      'tab-season': {
+        templateUrl: 'templates/page-team.html',
+        controller: 'PlayersCtrl'
+      }
+    }
+  })
+
+  .state('tab.calendar', {
+    url: '/season/calendar',
+    views: {
+      'tab-season': {
+        templateUrl: 'templates/page-calendar.html',
+        controller: 'FixturesCtrl'
       }
     }
   });

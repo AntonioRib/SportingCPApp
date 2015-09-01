@@ -1,5 +1,17 @@
 angular.module('starter.services', [])
 
+.factory('Players', function() {
+  season = getLeagueSeason("PPL");
+  team = getTeamBySeason("Sporting Lisbon", season);
+  return getPlayersByTeam(team);
+})
+
+.factory('AllFixtures', function() {
+  season = getLeagueSeason("PPL");
+  team = getTeamBySeason("Sporting Lisbon", season);
+  return getAllFixturesByTeam(team);
+})
+
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
@@ -48,3 +60,4 @@ angular.module('starter.services', [])
     }
   };
 });
+
