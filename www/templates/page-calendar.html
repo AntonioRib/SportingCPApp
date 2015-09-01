@@ -1,9 +1,17 @@
 <ion-view view-title="Calendar">
   <ion-content ng-controller="FixturesCtrl" class="padding">
-  	 <ion-list>
-  		<ion-item ng-repeat="item in allFixtures"
-  		class="item-icon-left item-text-wrap">
-        {{item.awayTeamName}} vs {{item.homeTeamName}}
-  	</ion-list>
+    <div class="list">
+      <div href="#" ng-repeat="item in allFixtures" class="text-center">
+        <div class="item item-divider">
+          {{item.date | date:"dd MMMM yyyy - HH:mm" }}
+        </div>
+        <div class="item"ng-if="item.status == 'TIMED'">
+          {{item.awayTeamName}} vs {{item.homeTeamName}}
+        </div>
+        <div class="item" ng-if="item.status == 'FINISHED'">
+          {{item.homeTeamName}} {{item.result.goalsHomeTeam}} vs {{item.result.goalsAwayTeam}} {{item.awayTeamName}}
+        </div>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

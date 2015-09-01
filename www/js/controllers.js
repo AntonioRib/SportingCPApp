@@ -19,7 +19,6 @@ angular.module('starter.controllers', [])
 })
 
 .controller('FixturesCtrl', function($scope, AllFixtures) {
-	console.log(AllFixtures);
   $scope.allFixtures = AllFixtures;
 });
 
