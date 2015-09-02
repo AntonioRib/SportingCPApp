@@ -1,6 +1,9 @@
 angular.module('starter.controllers', [])
 
-.controller('HomeCtrl', function($scope) {})
+.controller('HomeCtrl', function($scope, SportingNews) {
+	console.log(SportingNews);
+	$scope.news = SportingNews;
+})
 
 .controller('SeasonCtrl', function($scope) {})
 

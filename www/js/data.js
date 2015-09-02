@@ -66,9 +66,21 @@ function getPlayersByTeam(team){
 		type: 'GET',
 		async: false,
 		success: function(response) {
-					answer = response.players;
+			answer = response.players;
 		} 
 	});
+	answer.sort(function(a, b){
+		console.log(a.jerseyNumber);
+		if(a.jerseyNumber == null){
+			return 1;
+		}
+
+		if(b.jerseyNumber == null){
+			return -1;
+		}
+
+		return a.jerseyNumber - b.jerseyNumber;
+	})
 	return answer;
 }
 
@@ -82,7 +94,7 @@ function getAllFixturesByTeam(team){
 		type: 'GET',
 		async: false,
 		success: function(response) {
-					answer = response.fixtures;
+			answer = response.fixtures;
 		} 
 	});
 	return answer;
@@ -98,14 +110,47 @@ function getLeagueTableBySeason(season){
 		type: 'GET',
 		async: false,
 		success: function(response) {
-					answer = response.players;
+			answer = response.players;
 		} 
 	});
 	return answer;
 }
 
+function getSeasonByFixture(fixture) {
+	var resource_url = fixture._links.soccerseason.href;
+	var answer;
+	jQuery.ajax({
+		headers: { 'X-Auth-Token': api_key },
+		url: resource_url,
+		dataType: 'json',
+		type: 'GET',
+		async: false,
+		success: function(response) {
+			answer = response.league;
+		} 
+	});
+	return answer;
+};
 
-
+function getNews(){
+	var resource_url = "https://webhose.io/search?token=8c1a7422-f92c-492c-aae9-87790c49297a&format=json&q=Sporting%20Clube%20de%20Portugal%20(Portugal)&language=portuguese";
+	var answer;
+	jQuery.ajax({
+		url: resource_url,
+		dataType: 'json',
+		type: 'GET',
+		async: false,
+		success: function(response) {
+			answer = response.posts;
+		} 
+	});
+	answer.sort(function(a, b){
+		aDate = new Date(a.thread.published);
+		bDate = new Date(b.thread.published);
+		return bDate - aDate;
+	})
+	return answer;
+}
 /*
 Thats how to use.
 jQuery(document).ready(function(){

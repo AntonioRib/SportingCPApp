@@ -9,7 +9,27 @@ angular.module('starter.services', [])
 .factory('AllFixtures', function() {
   season = getLeagueSeason("PPL");
   team = getTeamBySeason("Sporting Lisbon", season);
-  return getAllFixturesByTeam(team);
+  allFixtures = getAllFixturesByTeam(team);
+  //Intended to give users oportunity to see which competition is.
+   /* for(var i = 0; i < allFixtures.length; i++){
+      var league = getSeasonByFixture(allFixtures[i])
+      if(league == "CL"){
+        allFixtures[i].leagueImage = "/img/CL100x100.png"
+      } else if(league == "PPL"){
+        allFixtures[i].leagueImage = "/img/PPL100x100.png"
+      } else {
+        allFixtures[i].leagueImage = "";
+      }
+    } */
+  return allFixtures;
+})
+
+.factory('SportingNews', function(){
+  news = getNews();
+  for(var i = 0; i<news.length; i++){
+    news[i].textCut = news[i].text.substr(0, 492)+"...";
+  }
+  return news;
 })
 
 .factory('Chats', function() {

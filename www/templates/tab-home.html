@@ -1,5 +1,19 @@
 <ion-view view-title="Sporting Clube de Portugal">
-  <ion-content class="padding">
-
-  </ion-content>
+<div class="bar bar-subheader">
+  <h2 class="title">News</h2>
+</div>
+<ion-content ng-controller="HomeCtrl" class="padding has-subheader">
+<div class="list card" ng-repeat="item in news">
+	<div class="item item-avatar">
+		<img src="{{item.thread.main_image}}">
+		<a href="http://{{item.thread.site_full}}"><h2>{{item.thread.section_title}} - {{item.thread.site}}</h2></a>
+		<p>{{item.title}} | {{item.published | date:"dd MMMM yyyy" }}</p>
+	</div>
+	<div class="item item-body">
+		<p>
+			{{item.textCut}}
+		</p>
+	</div>
+</div>
+</ion-content>
 </ion-view>
