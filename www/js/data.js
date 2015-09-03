@@ -151,6 +151,22 @@ function getNews(){
 	})
 	return answer;
 }
+
+function getAllLeagueSeasons(league){
+	var actualYear = 2015;
+	var seasons = [];
+	for(var i = actualYear; i > 0; i--){
+		var season = getLeagueSeason(league, i);
+		if(season != null){
+			seasons.push(season);
+		} else {
+			return seasons;
+		}
+		
+	}
+	console.log(seasons);
+	return seasons;
+}
 /*
 Thats how to use.
 jQuery(document).ready(function(){
